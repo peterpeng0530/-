@@ -1,5 +1,3 @@
-
-
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col max-w-2xl mx-auto shadow-2xl overflow-hidden">
       {/* Header */}
