@@ -1,41 +1,5 @@
 
 
-const App: React.FC = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>(Category.POPULAR);
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-
-  const addToCart = (item: MenuItem) => {
-    setCart((prev) => {
-      const existing = prev.find((i) => i.id === item.id);
-      if (existing) {
-        return prev.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-        );
-      }
-      return [...prev, { ...item, quantity: 1 }];
-    });
-  };
-
-  const removeFromCart = (item: MenuItem) => {
-    setCart((prev) => {
-      const existing = prev.find((i) => i.id === item.id);
-      if (existing && existing.quantity > 1) {
-        return prev.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity - 1 } : i
-        );
-      }
-      return prev.filter((i) => i.id !== item.id);
-    });
-  };
-
-  const totalItems = useMemo(() => cart.reduce((acc, item) => acc + item.quantity, 0), [cart]);
-  const totalPrice = useMemo(() => cart.reduce((acc, item) => acc + item.price * item.quantity, 0), [cart]);
-
-  const filteredItems = useMemo(() => {
-    return MENU_ITEMS.filter(item => item.category === activeCategory);
-  }, [activeCategory]);
-
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col max-w-2xl mx-auto shadow-2xl overflow-hidden">
       {/* Header */}
