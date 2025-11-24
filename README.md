@@ -1,8 +1,4 @@
-import React, { useState, useMemo } from 'react';
-import { CATEGORIES, MENU_ITEMS } from './constants';
-import { MenuItem, CartItem, Category } from './types';
-import { MenuItemCard } from './components/MenuItemCard';
-import { CartDrawer } from './components/CartDrawer';
+
 
 const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<Category>(Category.POPULAR);
